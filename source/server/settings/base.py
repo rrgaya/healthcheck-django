@@ -113,7 +113,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
 ADMINS = [
     ('Ricardo Gaya', 'rrgaya@gmail.com'),
