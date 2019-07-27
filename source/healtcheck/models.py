@@ -1,5 +1,5 @@
 from django.db import models
-
+import requests
 
 
 class Endereco(models.Model):
@@ -8,6 +8,14 @@ class Endereco(models.Model):
 
     def __str__(self):
         return self.url
+
+    def verificar(self):
+        r = requests.get(self.url)
+        Verificacao.objects.create(
+            endereco=self,
+            status=r.status_code
+        )
+
 
 
 class Verificacao(models.Model):
