@@ -1,6 +1,8 @@
 from django.db import models
 import requests
+import logging
 
+log = logging.getLogger(__name__)
 
 class Endereco(models.Model):
     url = models.URLField()
@@ -10,6 +12,7 @@ class Endereco(models.Model):
         return self.url
 
     def verificar(self):
+        log.debug("Verificando URL={URL}".format(URL=self.url))
         r = requests.get(self.url)
         Verificacao.objects.create(
             endereco=self,
