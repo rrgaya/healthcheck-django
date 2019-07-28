@@ -5,7 +5,8 @@ migrate:
 	./source/manage.py migrate
 
 test:
-	./source/manage.py test
+	cd ./source && pytest
 
 rodar_verificacoes:
 	./source/manage.py rodar_verificacoes
+

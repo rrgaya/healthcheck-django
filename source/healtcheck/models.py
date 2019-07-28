@@ -30,10 +30,11 @@ class Endereco(models.Model):
         )
 
 
-
 class Verificacao(models.Model):
+
     OK_200 = 200
     NOT_FOUND_404 = 404
+
     CHOICES_STATUS = (
         (OK_200, "OK"),
         (NOT_FOUND_404, "NOT FOUND"),
