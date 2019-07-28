@@ -14,6 +14,7 @@ class EnderecoAdmin(admin.ModelAdmin):
             return "N/A"
         else:
             return verificacoes[0].get_status_display()
+    get_last_status.short_description = "Last Status"
 
 
 @admin.register(Verificacao)
