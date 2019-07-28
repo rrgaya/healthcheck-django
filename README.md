@@ -1,6 +1,8 @@
 # HealthCheck Django Server
 
-[![Build Status](https://travis-ci.org/rrgaya/healtthcheck.svg?branch=master)](https://travis-ci.org/rrgaya/healtthcheck)
+[![Build Status](https://travis-ci.org/rrgaya/healtthcheck.svg?branch=master)](https://travis-ci.org/rrgaya/healtthcheck)  [![Updates](https://pyup.io/repos/github/rrgaya/healthcheck-django/shield.svg)](https://pyup.io/repos/github/rrgaya/healthcheck-django/)  [![Python 3](https://pyup.io/repos/github/rrgaya/healthcheck-django/python-3-shield.svg)](https://pyup.io/repos/github/rrgaya/healthcheck-django/)
+
+
 
 ## Descrição
 
