@@ -4,13 +4,19 @@ from .models import Endereco, Verificacao
 
 @admin.register(Endereco)
 class EnderecoAdmin(admin.ModelAdmin):
-    list_display = ('url', 'ativo')
+    list_display = ['url', 'ativo', 'get_last_status']
+
+    def get_last_status(self, obj):
+        # TODO: Refactoring para adicionar created_at no modelo de Verificacao
+        # verificacoes = obj.verificacao_set.all().order_by("-created_at")
+        verificacoes = obj.verificacao_set.all()
+        if verificacoes.count() == 0:
+            return "N/A"
+        else:
+            return verificacoes[0].get_status_display()
 
 
 @admin.register(Verificacao)
 class VerificacaoAdmin(admin.ModelAdmin):
-    list_display = ('endereco', 'status')
+    list_display = ['endereco', 'status']
 
-
-# admin.site.register(Endereco, EnderecoAdmin)
-# admin.site.register(Verificacao, VerificacaoAdmin)
