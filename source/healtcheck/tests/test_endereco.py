@@ -1,11 +1,14 @@
 from django.test import TestCase
 from healtcheck.models import Endereco, Verificacao
-
+import requests_mock
 
 class TestEndereco(TestCase):
 
-    def test_verifica_ok(self):
-        endereco = Endereco.objects.create(url="https://www.google.com")
+    @requests_mock.Mocker()
+    def test_verifica_ok(self, r_mock):
+        url = "https://www.google1.com"
+        r_mock.get(url, status_code=200)
+        endereco = Endereco.objects.create(url=url)
         endereco.verificar()
         v = Verificacao.objects.last()
 
@@ -13,8 +16,11 @@ class TestEndereco(TestCase):
         self.assertEqual(endereco, v.endereco)
         self.assertEqual(200, v.status)
 
-    def test_verifica_404(self):
-        endereco = Endereco.objects.create(url="http://gestao-clientes-rrgaya.herokuapp.com/test")
+    @requests_mock.Mocker()
+    def test_verifica_404(self, r_mock):
+        url = "https://www.google1.com"
+        r_mock.get(url, status_code=404)
+        endereco = Endereco.objects.create(url=url)
         endereco.verificar()
         v = Verificacao.objects.last()
 
